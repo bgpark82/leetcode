@@ -5,16 +5,20 @@ class Solution {
         // .,
         // lr
         while(l < r) {            
+            char start = s.charAt(l);
+            char end = s.charAt(r);
              
-            while(l < s.length() && isValid(s.charAt(l))) {
+            if(l < s.length() && isValid(start)) {
                 l++;
+                continue;
             }
-            while(r >= 0 && isValid(s.charAt(r))) {
+            if(r >= 0 && isValid(end)) {
                 r--;
+                continue;
             }
             if(l >= s.length() || r < 0) continue;
             
-            if(Character.toLowerCase(s.charAt(l)) != Character.toLowerCase(s.charAt(r))) {
+            if(Character.toLowerCase(start) != Character.toLowerCase(end)) {
                 return false;
             }
             l++; r--;

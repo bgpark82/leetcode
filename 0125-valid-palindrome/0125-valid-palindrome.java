@@ -2,33 +2,25 @@ class Solution {
     public boolean isPalindrome(String s) {
         int l = 0, r = s.length() - 1;
         
-        // .,
-        // lr
         while(l < r) {            
             char start = s.charAt(l);
             char end = s.charAt(r);
              
-            if(l < s.length() && isValid(start)) {
+            // l and s.length() comparision doesn't need it cuz it can be handled at while loop
+            if(!Character.isLetterOrDigit(start)) {
                 l++;
                 continue;
             }
-            if(r >= 0 && isValid(end)) {
+            if(!Character.isLetterOrDigit(end)) {
                 r--;
                 continue;
             }
-            if(l >= s.length() || r < 0) continue;
             
-            if(Character.toLowerCase(start) != Character.toLowerCase(end)) {
-                return false;
-            }
+            if(Character.toLowerCase(start) != Character.toLowerCase(end)) return false;
             l++; r--;
             
         }
         
         return true;
-    }
-    
-    private boolean isValid(char c) {
-        return Character.isWhitespace(c) || !Character.isLetterOrDigit(c);
     }
 }

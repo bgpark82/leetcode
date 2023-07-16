@@ -22,7 +22,7 @@ class Solution {
             while(l < r) {
                 if (nums[i] + nums[l] + nums[r] == 0) {
                     List<Integer> tmp = Arrays.asList(nums[i], nums[l], nums[r]);
-                    Collections.sort(tmp);
+                    // Collections.sort(tmp);
                     set.add(tmp);    
                     r--; l++;
                 } else if (nums[i] + nums[l] + nums[r] > 0) {

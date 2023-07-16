@@ -14,16 +14,13 @@ class Solution {
         
         Arrays.sort(nums);
         Set<List<Integer>> set = new HashSet();
-        List<List<Integer>> ans = new ArrayList();
         
         for(int i = 0; i < nums.length - 1; i++) {
             int l = i + 1;
             int r = nums.length - 1;
             while(l < r) {
                 if (nums[i] + nums[l] + nums[r] == 0) {
-                    List<Integer> tmp = Arrays.asList(nums[i], nums[l], nums[r]);
-                    // Collections.sort(tmp);
-                    set.add(tmp);    
+                    set.add(Arrays.asList(nums[i], nums[l], nums[r]));    
                     r--; l++;
                 } else if (nums[i] + nums[l] + nums[r] > 0) {
                     r--;                    
@@ -31,11 +28,8 @@ class Solution {
                     l++;
                 }
             }
-
         }
-        ans.addAll(set);
-        return ans;
         
-        
+        return new ArrayList(set);
     }
 }

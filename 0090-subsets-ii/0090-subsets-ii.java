@@ -17,8 +17,8 @@ class Solution {
         
         if(!ans.contains(set)) ans.add(new ArrayList(set));
         
-        
         for(int i = index; i < nums.length; i++) {
+            if(i > index && nums[i] == nums[i-1]) continue;
             set.add(nums[i]);
             backtracking(nums, i + 1, set, ans);
             set.remove(set.size() - 1);

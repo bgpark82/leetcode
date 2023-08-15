@@ -15,9 +15,10 @@ class Solution {
     
     private void backtracking(int[] nums, int index, List<Integer> set, List<List<Integer>> ans) {
         
-        if(!ans.contains(set)) ans.add(new ArrayList(set));
+        ans.add(new ArrayList(set));
         
         for(int i = index; i < nums.length; i++) {
+            // skip?
             if(i > index && nums[i] == nums[i-1]) continue;
             set.add(nums[i]);
             backtracking(nums, i + 1, set, ans);

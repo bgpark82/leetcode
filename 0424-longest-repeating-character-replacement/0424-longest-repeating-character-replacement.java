@@ -15,7 +15,6 @@ class Solution {
         for(int r = 0, l = 0; r < s.length(); r++) {
             // 꾸준히 문자 등장 횟수를 저장한다
             arr[s.charAt(r) - 'A']++;
-            // 68.75 60.59
 
             // l을 증가시킬 조건
             if (r - l + 1 - findMax(arr) > k) {

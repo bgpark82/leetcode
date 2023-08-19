@@ -17,9 +17,8 @@ class Solution {
             arr[s.charAt(r) - 'A']++;
             // 68.75 60.59
 
-            max = findMax(arr); // max: window 안에서 최대 맥스값, 실제로 문자를 바꿀 필요없이, 바꿔야 할 문자의 개수를 저장하면 된다 
             // l을 증가시킬 조건
-            if (r - l + 1 - max > k) { // r-l+1 : 현재 윈도우, r-l+1-max : 현재 window에서 
+            if (r - l + 1 - findMax(arr) > k) {
                 arr[s.charAt(l) - 'A']--;
                 l++;
             }
@@ -31,6 +30,7 @@ class Solution {
         return ans;
     }
     
+    // window 내에서 가장 많은 개수를 가진 캐릭터의 개수
     private int findMax(int[] arr) {
         int max = 0;
         for(int i = 0; i < arr.length; i++) {

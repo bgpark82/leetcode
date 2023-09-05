@@ -36,14 +36,12 @@ class Solution {
         // n 4   6 -> true
         
         if(root == null) return true;
-        if(root.val >= max || root.val <= min) return false;
+        if(root.val >= max || root.val <= min) return false; // val2,147,483,647
         
         // root가 min과 max 2가지로 표현되어서, 참조값에 대한 한계를 극복
         // left는 max보다 작아야 한다
         // right은 min보다 커야 한다
         return isValid(root.left, min, root.val) && isValid(root.right, root.val, max); // 둘중에 하나라도 false면 false를 반환해야 한다
-        
-        
     }
     
     

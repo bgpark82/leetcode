@@ -10,31 +10,57 @@ class Solution {
         // max 1
         
         // abcabccbb
-        //   l
-        //     r
+        //  l
+        //    r
         
         // map
         // a 3
         // b 1
         // c 2
         
-        // substring의 substring을 비교할 수는 없다
-        // character 하나하나가 반복이 되었는지 확인해야 한다
-        Map<Character, Integer> map = new HashMap();
+        // qrsvbspk
+        //  l 
+        //      r
+        
+        // set
+        // r s v b  
+        
         int max = 0;
-        for(int i = 0; i < s.length(); i++) {
-            for(int j = 0; j < s.length(); j++) {
-                
-                if(map.containsKey(s.charAt(j))) {
-                    i = Math.max(i, map.get(s.charAt(j)) + 1);
-                }
-                
-                map.put(s.charAt(j), j);
-                max = Math.max(max, j - i + 1);
+        Set<Character> set = new HashSet();
+        int l = 0, r = 0;
+        while(r < s.length()) {
+            if(set.contains(s.charAt(r))) {
+                set.remove(s.charAt(l));
+                l++;
+            } else {
+                set.add(s.charAt(r));
+                r++;
+                max = Math.max(max, set.size());    
             }
+            
         }
         
         return max;
+        
+        
+        
+        // substring의 substring을 비교할 수는 없다
+        // character 하나하나가 반복이 되었는지 확인해야 한다
+//         Map<Character, Integer> map = new HashMap();
+//         int max = 0;
+//         for(int i = 0; i < s.length(); i++) {
+//             for(int j = 0; j < s.length(); j++) {
+                
+//                 if(map.containsKey(s.charAt(j))) {
+//                     i = Math.max(i, map.get(s.charAt(j)) + 1);
+//                 }
+                
+//                 map.put(s.charAt(j), j);
+//                 max = Math.max(max, j - i + 1);
+//             }
+//         }
+        
+        // return max;
         
 //         if(s == null || s.length() == 0) return 0;
         

@@ -5,23 +5,45 @@ class Solution {
         // O(logn)
         // O(n)
         
-        // 7, 1, 5, 3, 6, 4
-        // l  r
-        //    l  r          // 가장 오른쪽까지 살필 필요가 없다. 왜냐하면 7, 1이 가장 왼쪽에 있고, 가장 오른쪽에 100이 있다면 100-7보다, 100-1이 더 차이가 크기 때문이다
+        // 7 2 5 1 3 6 4
+        //       l
+        //             r  
         
-        int l = 0, r = 1, max = 0;
+        int l = 0, r = 0, max = 0;
         
+        // 오른쪽 인덱스의 하한을 설정해야 한다
+        // 왜냐하면 r은 계속 늘어날 것이기 때문이다
         while(r < prices.length) {
-            if(prices[l] < prices[r]) { 
-                // profit, move r to right
+            if(prices[r] > prices[l]) {
                 max = Math.max(max, prices[r] - prices[l]);
                 r++;
             } else {
                 l = r;
-                r = r + 1;
+                r++;
             }
         }
+                
         return max;
+        
+        
+        
+        // 7, 1, 5, 3, 6, 4
+        // l  r
+        //    l  r          // 가장 오른쪽까지 살필 필요가 없다. 왜냐하면 7, 1이 가장 왼쪽에 있고, 가장 오른쪽에 100이 있다면 100-7보다, 100-1이 더 차이가 크기 때문이다
+        
+//         int l = 0, r = 1, max = 0;
+        
+//         while(r < prices.length) {
+//             if(prices[l] < prices[r]) { 
+//                 // profit, move r to right
+//                 max = Math.max(max, prices[r] - prices[l]);
+//                 r++;
+//             } else {
+//                 l = r;
+//                 r = r + 1;
+//             }
+//         }
+//         return max;
         
         
         // 이 경우는 계속 r 포인트를 오른쪽으로 무의미하게 옮긴다

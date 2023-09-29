@@ -22,27 +22,41 @@ class Solution {
         return isValid(root, Long.MIN_VALUE, Long.MAX_VALUE);
     }
     
-    // BFS,DFS의 핵심은 inorder, preorder, postorder를 선택하는 것이다
-    private boolean isValid(TreeNode root, long min, long max) {
-        //    1
-        // 5     4
-        //n n.  3. 6
-        // 1 min max
-        // 5 min 1 -> false
-        // 4 1   max
-        // 3 1   4
-        // n 1   3 -> true
-        // 6 4   max
-        // n 4   6 -> true
+    private boolean isValid(TreeNode node, long min, long max) {
+        // preorder
+        // 2 min max
+        // 1 min 2
+        // 3 2   max
         
-        if(root == null) return true;
-        if(root.val >= max || root.val <= min) return false; // val2,147,483,647
+        if(node == null) return true;
+        if(node.val >= max || node.val <= min) return false;
         
-        // root가 min과 max 2가지로 표현되어서, 참조값에 대한 한계를 극복
-        // left는 max보다 작아야 한다
-        // right은 min보다 커야 한다
-        return isValid(root.left, min, root.val) && isValid(root.right, root.val, max); // 둘중에 하나라도 false면 false를 반환해야 한다
+        return isValid(node.left, min, node.val) && isValid(node.right, node.val, max);
     }
     
     
+    
+    
+    // BFS,DFS의 핵심은 inorder, preorder, postorder를 선택하는 것이다
+//     private boolean isValid(TreeNode root, long min, long max) {
+//         //    1
+//         // 5     4
+//         //n n.  3. 6
+//         //
+//         // 1 min max
+//         // 5 min 1 -> false
+//         // 4 1   max
+//         // 3 1   4
+//         // n 1   3 -> true
+//         // 6 4   max
+//         // n 4   6 -> true
+        
+//         if(root == null) return true;
+//         if(root.val >= max || root.val <= min) return false; // val2,147,483,647
+        
+//         // root가 min과 max 2가지로 표현되어서, 참조값에 대한 한계를 극복
+//         // left는 max보다 작아야 한다
+//         // right은 min보다 커야 한다
+//         return isValid(root.left, min, root.val) && isValid(root.right, root.val, max); // 둘중에 하나라도 false면 false를 반환해야 한다
+//     }
 }

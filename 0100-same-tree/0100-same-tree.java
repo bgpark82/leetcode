@@ -20,8 +20,7 @@ class Solution {
         //2.3  2 3
         if(p == null && q == null) return true;
         
-        if(p == null && q != null ||
-           p != null && q == null ||
+        if(p == null || q == null || 
             p.val != q.val) return false;
         
         

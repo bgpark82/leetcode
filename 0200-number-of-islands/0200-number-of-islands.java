@@ -14,12 +14,24 @@ class Solution {
         for(int i = 0; i < grid.length; i++) {
             for(int j = 0; j < grid[i].length; j++) {
                 if(!check[i][j] && grid[i][j] == '1') {
-                    bfs(grid, i, j);
+                    dfs(grid, i, j);
+                    count++;
                 }
             }
         }
         
         return count;
+    }
+    
+    private void dfs(char[][] grid, int x, int y) {
+        if(x < 0 || y < 0 || x >= grid.length || y >= grid[0].length || check[x][y] || grid[x][y] == '0') return;
+        
+        check[x][y] = true;
+        
+        dfs(grid, x + 1, y);
+        dfs(grid, x - 1, y);
+        dfs(grid, x, y + 1);
+        dfs(grid, x, y - 1);
     }
     
     

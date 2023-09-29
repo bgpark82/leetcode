@@ -22,11 +22,9 @@ class Solution {
         // 1 2 3 4
         dfs(root);
         
-        int i = 1;
-        for(int l : list) {
-            if(i++ == k) return l;
-        }
-        return -1;
+        
+        return list.get(k - 1);
+        
         
     }
     

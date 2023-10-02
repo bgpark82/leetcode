@@ -1,19 +1,5 @@
 class MinStack {
-    
-    // p -2
-    // p 0
-    // p -3
-    
-    // p 1
-    // p 3
-    // p 2
-    
-    // stack : 2 3 1
-    // min : 1
-    
-    // 0 -2 -3
-    //
-    
+
     private Deque<Integer> stack;
     private Deque<Integer> minStack;
 
@@ -25,6 +11,7 @@ class MinStack {
     public void push(int val) {
         stack.addFirst(val);
 
+        // 무조건 작은 값만 쌓아 올린다 (min stack의 순서는 중요하지 않다)
         int min = Math.min(val, minStack.size() == 0 ? val : minStack.peek());
         minStack.addFirst(min);
     }

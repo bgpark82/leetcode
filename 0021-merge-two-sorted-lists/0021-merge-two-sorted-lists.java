@@ -10,34 +10,40 @@
  */
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        // null
-        // r
-        // null 1 2 3
-        // h
-        // 1, 2, 3
-        //          l      
-        // 4, 5, 6
-        // r
+        //.           p1
+        // list1: 1 2 4
+        // list2: 1 3 4
+        //.           p2
         
-        // linkedlist 문제는 curr, prev만 있으면 되는구나
-        // 전체 리스트를 저장할 root가 필요함
-        ListNode root = new ListNode();
-        ListNode head = root; 
+        ListNode p1 = list1;
+        ListNode p2 = list2;
+        ListNode ans = new ListNode(1);
+        ListNode head = ans;
         
-        while(list1 != null && list2 != null) {
-            if(list1.val <= list2.val) {
-                head.next = list1;
-                list1 = list1.next;
+        while(p1 != null && p2 != null) {
+            if(p1.val <= p2.val) {
+                head.next = p1;
+                head = head.next;
+                p1 = p1.next;
             } else {
-                head.next = list2;
-                list2 = list2.next;
+                head.next = p2;
+                head = head.next;
+                p2 = p2.next;
             }
-            head = head.next;
         }
-        head.next = list1 == null ? list2 : list1;
+        while(p1 != null) {
+            head.next = p1;
+            head = head.next;
+            p1 = p1.next;
+        }
+        while(p2 != null) {
+            head.next = p2;
+            head = head.next;
+            p2 = p2.next;
+        }
         
-        return root.next;
         
+        return ans.next;
         
     }
 }

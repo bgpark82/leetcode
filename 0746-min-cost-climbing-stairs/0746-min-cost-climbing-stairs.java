@@ -3,16 +3,16 @@ class Solution {
     private Integer[] mem;
     
     public int minCostClimbingStairs(int[] cost) {
-        // 10 15 20
         mem = new Integer[cost.length];
         
-        int ans = Math.min(dp(cost, 0), dp(cost, 1));
+        // return Math.min(dp(cost, 0), dp(cost, 1));
         
-        for(int m : mem) {
-            System.out.println(m);
+        for(int i = 0; i < cost.length; i++) {
+            if(i >= 2) mem[i] = cost[i] + Math.min(mem[i-1], mem[i-2]);            
+            else mem[i] = cost[i];
         }
+        return Math.min(mem[cost.length - 1], mem[cost.length - 2]);
         
-        return ans;
     }
     
     private int dp(int[] cost, int index) {

@@ -6,7 +6,8 @@ class Solution {
         map.put('[', ']');
         map.put('{', '}');
         
-        if(s.length() == 1 || s.length() % 2 == 1) return false;
+        // 길이가 1개이거나 홀 수인 경우
+        if(s.length() % 2 == 1) return false;
         
         // Time Complexity: O(N)
         // Space Complexity: O(N) 

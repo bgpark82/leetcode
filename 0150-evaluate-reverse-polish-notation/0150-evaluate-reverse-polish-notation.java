@@ -12,6 +12,7 @@ class Solution {
         
         
         for(String token : tokens) {
+            // operand
             if(token.equals("+")) {
                 s.push(s.pop() + s.pop());
             } else if(token.equals("-")) {
@@ -24,6 +25,7 @@ class Solution {
                 int first = s.pop();
                 int second = s.pop();
                 s.push(second / first);
+            // number
             } else {
                 s.push(Integer.parseInt(token));
             }

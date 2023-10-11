@@ -4,7 +4,7 @@ class Solution {
         //    i
         // abc
         //  j
-        if(s == null || s.length() == 0) return true;
+        // if(s == null || s.length() == 0) return true;
         
         int j = 0;
         for(int i = 0; i < t.length(); i++) {

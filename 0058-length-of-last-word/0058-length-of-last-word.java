@@ -9,7 +9,7 @@ class Solution {
         while(r >= 0 && s.charAt(r) == ' ') r--;
         int l = r;
         while(l >= 0 && s.charAt(l) != ' ') l--; 
-        System.out.println(r + " " + l);
+
         return r - l;
         
         

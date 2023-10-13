@@ -3,18 +3,20 @@ class Solution {
         
         // flower, flow, flight
         // flower, flight
+        // fl      fl
         
         if(strs == null || strs.length == 0) return "";
         
         Arrays.sort(strs);
         
-        int l = 0, r = strs.length - 1, i = 0;
+        String l = strs[0], r = strs[strs.length - 1];
+        int i = 0;
         
-        while(strs[l].length() > i && strs[r].length() > i) {
-            if(strs[l].charAt(i) != strs[r].charAt(i)) break;
+        while(l.length() > i && r.length() > i) {
+            if(l.charAt(i) != r.charAt(i)) break;
             i++;
         }
         
-        return strs[l].substring(0, i);
+        return l.substring(0, i);
     }
 }

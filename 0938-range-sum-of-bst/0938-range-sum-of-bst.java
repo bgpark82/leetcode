@@ -15,6 +15,17 @@
  */
 class Solution {
     
+//     public int rangeSumBST(TreeNode root, int low, int high) {
+            
+//         if(root == null) return 0;
+        
+        
+//         if(root.val < low) return rangeSumBST(root.right, low, high);
+        
+//         // 현재 노드가 low보다 작지 않고 high보다 작으면
+//     }
+    
+    
     int sum = 0;
     
     public int rangeSumBST(TreeNode root, int low, int high) {
@@ -29,14 +40,12 @@ class Solution {
     private void dfs(TreeNode node, int low, int high) {
         if(node == null) return;
         
-        if(node.val >= low && node.val <= high) {
+        if(node.val < low) dfs(node.right, low, high);
+        else if(node.val > high) dfs(node.left, low, high);
+        else {
             sum += node.val;
             dfs(node.left, low, high);
             dfs(node.right, low, high);
-        } else if(node.val < low) {
-            dfs(node.right, low, high);
-        } else if(node.val > high) {
-            dfs(node.left, low, high);
         }
     }
 }

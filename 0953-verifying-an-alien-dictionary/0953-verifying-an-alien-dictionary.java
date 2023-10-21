@@ -24,12 +24,9 @@ class Solution {
             String prev = words[i-1];        
             String curr = words[i];        
             
-            // for(int j = 0; j < len; j++) {
-            //     if(map[prev.charAt(j) - 'a'] < map[curr.charAt(j) - 'a']) break;
-            //     if(map[prev.charAt(j) - 'a'] > map[curr.charAt(j) - 'a']) return false;
-            // }
-            
-            if(!check(map, prev, curr)) return false;
+            // if you can't apply conditions in the loop
+            // wrap them in function
+            if(!check(map, prev, curr)) return false; 
         }
         
         return true;
@@ -38,9 +35,15 @@ class Solution {
     private boolean check(int[] map, String prev, String curr) {
         int len = Math.min(prev.length(), curr.length());
         for(int j = 0; j < len; j++) {
-            if(map[prev.charAt(j) - 'a'] < map[curr.charAt(j) - 'a']) return true;
-            if(map[prev.charAt(j) - 'a'] > map[curr.charAt(j) - 'a']) return false;
+            // not equal
+            if(map[prev.charAt(j) - 'a'] != map[curr.charAt(j) - 'a']) { 
+                // prev < curr : true
+                // prev > curr : false
+                return map[prev.charAt(j) - 'a'] < map[curr.charAt(j) - 'a']; 
+            }
         }
+        // equals in whole time
+        // then compare length
         return prev.length() <= curr.length();
     }
     

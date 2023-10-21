@@ -15,36 +15,16 @@
  */
 class Solution {
     
+    // return sum of value of node ranging between low and hight (inclusive)
+    // sum of left and right is the answer
     public int rangeSumBST(TreeNode root, int low, int high) {
-        if(root == null) return 0;
+        if(root == null) return 0; // if there is no value nothing to sum
+        
+        // these branches out in specific condition
+        // if value of node is less than low, move to node right and get answer (sum) of it
         if(root.val < low) return rangeSumBST(root.right, low, high);
-        if(root.val > high) return rangeSumBST(root.left, low, high);
+        if(root.val > high) return  rangeSumBST(root.left, low, high);
+        // if it within range
         return root.val + rangeSumBST(root.left, low, high) + rangeSumBST(root.right, low, high);
     }
-    
-    // 10 + 7 + 15
-    
-    
-//     int sum = 0;
-    
-//     public int rangeSumBST(TreeNode root, int low, int high) {
-//         // 7 ~ 15
-//         //   10    equal -> sum
-//         //  5      less -> right
-//         //.   7.   eqaul -> sum
-//         dfs(root, low, high);
-//         return sum;
-//     }
-    
-//     private void dfs(TreeNode node, int low, int high) {
-//         if(node == null) return;
-        
-//         if(node.val < low) dfs(node.right, low, high);
-//         else if(node.val > high) dfs(node.left, low, high);
-//         else {
-//             sum += node.val;
-//             dfs(node.left, low, high);
-//             dfs(node.right, low, high);
-//         }
-//     }
 }

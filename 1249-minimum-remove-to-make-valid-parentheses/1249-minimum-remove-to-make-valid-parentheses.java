@@ -7,7 +7,7 @@ class Solution {
             char c = s.charAt(i);
             
             if(c == '(') stack.push(new Pair(c, i));
-                else if(c == ')') {
+            else if(c == ')') {
                 if(!stack.isEmpty() && stack.peek().key == '(') stack.pop();
                 else stack.push(new Pair(c, i));
             } 

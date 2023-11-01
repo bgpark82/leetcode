@@ -5,15 +5,11 @@ class Solution {
         
         for(int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            if(c == '(') { 
-                stack.push(new Pair(c, i));
-            } else if(c == ')') {
-                // 이미 존재하면 
-                if(!stack.isEmpty() && stack.peek().key == '(') {
-                    stack.pop();
-                } else {
-                    stack.push(new Pair(c, i));
-                }
+            
+            if(c == '(') stack.push(new Pair(c, i));
+                else if(c == ')') {
+                if(!stack.isEmpty() && stack.peek().key == '(') stack.pop();
+                else stack.push(new Pair(c, i));
             } 
         }
         

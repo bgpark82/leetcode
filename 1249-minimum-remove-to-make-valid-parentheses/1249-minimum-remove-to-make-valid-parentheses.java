@@ -8,6 +8,7 @@ class Solution {
             if(c == '(') { 
                 stack.push(new Pair(c, i));
             } else if(c == ')') {
+                // 이미 존재하면 
                 if(!stack.isEmpty() && stack.peek().key == '(') {
                     stack.pop();
                 } else {
@@ -17,8 +18,6 @@ class Solution {
         }
         
         while(!stack.isEmpty()) {
-            Pair p = stack.peek();
-            System.out.println(p.key + " " + p.index );
             sb.deleteCharAt(stack.pop().index);
         }
         

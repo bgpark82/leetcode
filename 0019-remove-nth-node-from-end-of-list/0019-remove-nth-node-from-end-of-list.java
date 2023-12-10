@@ -10,23 +10,30 @@
  */
 class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        // 1 2 3 4 5
-        //   f        
+        //  1 2 3 4 5
+        //    f        
         //
-        // 1 2 3 4 5
-        //          f
+        
+        //   1 2 3 4 5
+        //     f        
+        // s
+        
+        //   1 2 3 4 5
+        //           f        
         //       s
         
-        ListNode dummy = new ListNode(0, head);
-        ListNode slow = dummy, fast = head;
         
+        // 시작값을 -1에서 시작
+        ListNode ans = new ListNode(0, head);
+        
+        ListNode fast = head, slow = ans;
         while(n-- > 0) fast = fast.next;
         while(fast != null) {
             fast = fast.next;
             slow = slow.next;
         }
-        
         slow.next = slow.next.next;
-        return dummy.next;
+        
+        return ans.next;
     }
 }

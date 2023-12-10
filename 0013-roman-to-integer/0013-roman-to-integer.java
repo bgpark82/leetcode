@@ -1,7 +1,7 @@
 class Solution {
     public int romanToInt(String s) {
-        // M     CM XC IV
-        // 1000 100 1000 10 100 1 5
+        // M     CM             XC        IV
+        // 1000 (100 < 1000) (10 < 100) (1 < 5)
         
         int len = s.length();
         
@@ -21,7 +21,6 @@ class Solution {
             
             prev = curr;
         }
-        
         
         return sum;
     }

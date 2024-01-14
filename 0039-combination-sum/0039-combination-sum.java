@@ -1,7 +1,8 @@
 class Solution {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        if(candidates == null || candidates.length == 0) return new ArrayList();
-        
+        // 2 3 6 7
+        // 2 2 3
+        // 7
         List<List<Integer>> ans = new ArrayList();
         List<Integer> step = new ArrayList();
         
@@ -11,7 +12,9 @@ class Solution {
     }
     
     private void bt(int[] candidates, int index, List<Integer> step, List<List<Integer>> ans, int target, int sum) {
-
+        // 2 3 6 7
+        // 0
+        // [2, 2, 3]
         if(sum > target) return;
         
         if(sum == target) {
@@ -22,7 +25,7 @@ class Solution {
         for(int i = index; i < candidates.length; i++) {
             step.add(candidates[i]);
             bt(candidates, i, step, ans, target, sum + candidates[i]);
-            step.remove(step.size() - 1);
+            step.remove(step.size() - 1);   
         }
     }
     

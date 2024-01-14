@@ -12,17 +12,16 @@ class Solution {
         int[] arr = new int[26];
         int max = 0, ans = 0;
         
-        // shrink sliding window (길이의 관점에서 봐야되는구나, sliding window가 window 길이이기 때문에)
         for(int l = 0, r = 0; r < s.length(); r++) {
             arr[s.charAt(r) - 'A']++;
+            // 현재 포인트에서 가장 최대의 값 (A 혹은 B 일수도 있다 계속 변한다)
             max = Math.max(max, arr[s.charAt(r) - 'A']);
             
-            // 현재 윈도우에서 가장 큰 값을 제외한 값이 k보다 크면 l포인터를 이동 (shrink)
-            while(r - l + 1 - max > k) {
+            // 현재 윈도우에서 가장 적게 나오는 값을 찾는다 (A 혹은 B 일수도 있다 계속 변한다)
+            while((r - l + 1) - max > k) {
                 arr[s.charAt(l) - 'A']--;
                 l++;
-            }
-            
+            }            
             ans = Math.max(ans, r - l + 1);
         }
         return ans;

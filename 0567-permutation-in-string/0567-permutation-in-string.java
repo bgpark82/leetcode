@@ -1,17 +1,16 @@
 class Solution {
     public boolean checkInclusion(String s1, String s2) {
-        // ab
-        // eidbaooo
+        // bfg
+        // ehijbfgl
+        // 
+        // abcdefghijkl
+        //  1   11    
         
         // permutation
         // 1. make permutation
         // 2. contained letter
-    
-        // a 1
-        // b 1
-        
-        // eidbaooo
-        //    i
+        //
+        // sling window는 꼬리를 붙히고 머리를 지워도 가능
         
         int n = s1.length();
         int[] freq = new int[26];

@@ -1,31 +1,29 @@
 class KthLargest {
     
-    // kth largest means if there are 3 values in min heap
-    // we can find the top value of it
-    // so we need to keep heap size 3
-    // when add value on heap
-    // if there is value in heap which is smaller than input value
-    // we can pop it, because we only need 3 largest values in min heap
-    // any smaller value than input, needs to be pop
-    
-    private int k;
-    private PriorityQueue<Integer> nums = new PriorityQueue();
 
+    /**
+        4 5 8 2
+        
+        2 4 5
+        4 5 8
+        
+    */
+    
+    PriorityQueue<Integer> pq = new PriorityQueue();
+    int k;
+    
     public KthLargest(int k, int[] nums) {
         this.k = k;
-        for(int n : nums) add(n); // keep this policy from beginning
+        for(int n : nums) add(n);
     }
     
     public int add(int val) {
-        if(this.nums.size() < k) {
-            this.nums.add(val);
-        } else if (this.nums.peek() < val) {
-            // when smaller value needs to be popped
-            this.nums.poll();
-            this.nums.add(val);    
+        if(pq.size() < k) pq.offer(val);
+        else if(pq.peek() < val) {
+            pq.poll();
+            pq.offer(val);
         }
-        
-        return this.nums.peek();
+        return pq.peek();
     }
 }
 
